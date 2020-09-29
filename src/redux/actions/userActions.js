@@ -55,7 +55,6 @@ export const signupUser = (newUserData, history) => (dispatch) => {
 };
 
 export const getUserData = () => (dispatch) => {
-  console.log("calling it");
   dispatch({ type: LOADING_USER });
   axios
     .get("user")

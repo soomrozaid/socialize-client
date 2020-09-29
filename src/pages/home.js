@@ -18,7 +18,6 @@ function Home() {
 
   useEffect(() => {
     recentScreamsMarkup = mapScreamsToScreen();
-    console.log("called");
   }, [screams]);
 
   function mapScreamsToScreen() {
