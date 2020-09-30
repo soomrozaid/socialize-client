@@ -51,7 +51,7 @@ function PostScream({ classes }) {
       setBody("");
       setOpen(false);
     }
-  }, [errors]);
+  }, [errors, loading]);
 
   return (
     <Fragment>

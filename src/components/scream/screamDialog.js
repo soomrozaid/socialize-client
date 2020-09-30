@@ -7,11 +7,8 @@ import { Link } from "react-router-dom";
 import theme from "../../util/theme";
 
 // MUI
-import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
-import DialogTitle from "@material-ui/core/DialogTitle";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import CloseIcon from "@material-ui/icons/Close";
 import UnfoldMore from "@material-ui/icons/UnfoldMore";
@@ -21,14 +18,13 @@ import Typography from "@material-ui/core/Typography";
 
 // Redux
 import { useSelector, useDispatch } from "react-redux";
-import { getScream } from "../../redux/actions/dataActions";
+import { getScream, clearErrors } from "../../redux/actions/dataActions";
 import LikeButton from "./likeButton";
+import CommentForm from "./commentForm";
+import Comments from "./comments";
 
 const styles = (theme) => ({
   ...theme,
-  invisibleSeperator: {
-    border: "none",
-  },
   profileImage: {
     width: 200,
     height: 200,
@@ -54,24 +50,28 @@ const styles = (theme) => ({
 });
 
 function ScreamDialog({ classes, screamId, userHandle }) {
+  const [scream, setScream] = useState({});
   const [open, setOpen] = useState(false);
-  //   const [loading, setLoading] = useState(false);
-  //   const [screamData, setScreamData] = useState({});
 
-  const {
-    scream: {
-      id = screamId,
-      body,
-      createdAt,
-      likeCount,
-      commentCount,
-      userImage,
-      handle = userHandle,
-    },
-  } = useSelector((state) => state.data);
+  const data = useSelector((state) => state.data);
   const UI = useSelector((state) => state.UI);
 
+  const {
+    id = screamId,
+    body,
+    createdAt,
+    likeCount,
+    commentCount,
+    comments,
+    userImage,
+    handle = userHandle,
+  } = scream;
+
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    setScream(data.scream);
+  }, [data]);
 
   function handleOpen() {
     setOpen(true);
@@ -83,7 +83,7 @@ function ScreamDialog({ classes, screamId, userHandle }) {
       <CircularProgress size={200} thickness={2} />
     </div>
   ) : (
-    <Grid container spacing={16}>
+    <Grid container spacing={10}>
       <Grid item xs={5}>
         <img
           src={userImage}
@@ -114,6 +114,9 @@ function ScreamDialog({ classes, screamId, userHandle }) {
         </MyButton>
         <span>{commentCount} comments</span>
       </Grid>
+      <hr className={classes.visibleSeperator} />
+      <CommentForm screamId={screamId} />
+      <Comments comments={comments} />
     </Grid>
   );
 
@@ -134,7 +137,10 @@ function ScreamDialog({ classes, screamId, userHandle }) {
       >
         <MyButton
           tip="Close"
-          onClick={() => setOpen(false)}
+          onClick={() => {
+            dispatch(clearErrors());
+            setOpen(false);
+          }}
           tipClassName={classes.closeButton}
         >
           <CloseIcon />

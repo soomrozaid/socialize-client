@@ -21,9 +21,7 @@ const initialState = {
 function saveState(state) {
   try {
     if (state === null) {
-      console.log("state", "null");
     } else {
-      console.log(state);
       const preparedState = JSON.stringify(state);
       localStorage.setItem("state", preparedState);
     }
@@ -36,7 +34,6 @@ function getState() {
   try {
     const serializedState = localStorage.getItem("state");
     if (serializedState === null) {
-      console.log("null");
       return initialState;
     }
     return JSON.parse(serializedState);

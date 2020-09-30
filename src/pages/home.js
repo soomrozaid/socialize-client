@@ -14,11 +14,7 @@ function Home() {
 
   useEffect(() => {
     dispatch(getScreams());
-  }, []);
-
-  useEffect(() => {
-    recentScreamsMarkup = mapScreamsToScreen();
-  }, [screams]);
+  }, [dispatch]);
 
   function mapScreamsToScreen() {
     if (!loading)
