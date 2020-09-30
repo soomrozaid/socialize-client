@@ -16,6 +16,7 @@ const styles = (theme) => ({
 
 function User(props) {
   const [profile, setProfile] = useState({});
+  const [screamIdParam, setScreamIdParam] = useState(null);
 
   const { screams, loading } = useSelector((state) => state.data);
 
@@ -23,6 +24,13 @@ function User(props) {
 
   useEffect(() => {
     const handle = props.match.params.handle;
+
+    const screamId = props.match.params.screamId;
+
+    if (screamId) {
+      setScreamIdParam(screamId);
+    }
+
     dispatch(getUserData(handle));
     axios
       .get(`/user/${handle}`)
@@ -36,8 +44,16 @@ function User(props) {
     <p>Loading Data...</p>
   ) : screams === null ? (
     <p>No screams from this user</p>
-  ) : (
+  ) : !screamIdParam ? (
     screams.map((scream) => <Scream key={scream.screamId} scream={scream} />)
+  ) : (
+    screams.map((scream) => {
+      if (scream.screamId !== screamIdParam)
+        return <Scream key={scream.screamId} scream={scream} />;
+      else {
+        return <Scream key={scream.screamId} scream={scream} openDialog />;
+      }
+    })
   );
 
   return (
@@ -45,6 +61,7 @@ function User(props) {
       <Grid container spacing={6}>
         <Grid item sm={8} xs={12}>
           {screamsMarkup}
+          {console.log(loading, screamIdParam)}
         </Grid>
         <Grid item sm={4} xs={12}>
           {profile === null ? (

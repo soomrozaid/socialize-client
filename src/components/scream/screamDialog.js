@@ -49,12 +49,30 @@ const styles = (theme) => ({
   },
 });
 
-function ScreamDialog({ classes, screamId, userHandle }) {
+function ScreamDialog({ classes, screamId, userHandle, openDialog }) {
   const [scream, setScream] = useState({});
   const [open, setOpen] = useState(false);
+  const [oldPath, setOldPath] = useState(null);
+  const [newPath, setNewPath] = useState(null);
 
   const data = useSelector((state) => state.data);
   const UI = useSelector((state) => state.UI);
+
+  useEffect(() => {
+    if (openDialog) {
+      handleOpen();
+    }
+
+    const oPath = window.location.pathname;
+    const nPath = `/users/${handle}/scream/${id}`;
+
+    if (oPath === nPath) {
+      setOldPath(`/users/${handle}`);
+    } else {
+      setOldPath(oPath);
+    }
+    setNewPath(nPath);
+  }, []);
 
   const {
     id = screamId,
@@ -74,8 +92,16 @@ function ScreamDialog({ classes, screamId, userHandle }) {
   }, [data]);
 
   function handleOpen() {
+    window.history.pushState(null, null, newPath);
+
     setOpen(true);
     dispatch(getScream(screamId));
+  }
+
+  function handleClose() {
+    window.history.pushState(null, null, oldPath);
+    dispatch(clearErrors());
+    setOpen(false);
   }
 
   const dialogMarkup = UI.loading ? (
@@ -137,10 +163,7 @@ function ScreamDialog({ classes, screamId, userHandle }) {
       >
         <MyButton
           tip="Close"
-          onClick={() => {
-            dispatch(clearErrors());
-            setOpen(false);
-          }}
+          onClick={handleClose}
           tipClassName={classes.closeButton}
         >
           <CloseIcon />
