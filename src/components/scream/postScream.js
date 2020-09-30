@@ -1,5 +1,5 @@
 import React, { useState, Fragment, useEffect } from "react";
-import MyButton from "./myButton";
+import MyButton from "../layout/myButton";
 import { withStyles } from "@material-ui/core/styles";
 
 import AddIcon from "@material-ui/icons/Add";
@@ -13,9 +13,9 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
 import { useSelector, useDispatch } from "react-redux";
-import { postScream, clearErrors } from "../redux/actions/dataActions";
+import { postScream, clearErrors } from "../../redux/actions/dataActions";
 
-import theme from "../util/theme";
+import theme from "../../util/theme";
 
 const styles = (theme) => ({
   ...theme,

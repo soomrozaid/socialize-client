@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { withStyles } from "@material-ui/core";
-import theme from "../util/theme";
-import MyButton from "./myButton";
+import theme from "../../util/theme";
+import MyButton from "../layout/myButton";
 import { Link } from "react-router-dom";
 
 import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 
 import { useSelector, useDispatch } from "react-redux";
-import { likeScream, unlikeScream } from "../redux/actions/dataActions";
+import { likeScream, unlikeScream } from "../../redux/actions/dataActions";
 
 const styles = (theme) => ({
   ...theme,
@@ -26,7 +26,6 @@ function LikeButton({ classes, screamId }) {
   useEffect(() => {
     setLikes(user.likes);
     setAuthenticated(user.authenticated);
-    // setHandle(user.credentials.handle);
   }, [user, isLiked]);
 
   const likedScream = () => {

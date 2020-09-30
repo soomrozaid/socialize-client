@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
-import theme from "../util/theme";
+import theme from "../../util/theme";
 import { Link } from "react-router-dom";
 import dayjs from "dayjs";
 
@@ -10,7 +10,7 @@ import EditDetails from "./editDetails";
 
 // Redux
 import { useSelector, useDispatch } from "react-redux";
-import { logoutUser, uploadImage } from "../redux/actions/userActions";
+import { logoutUser, uploadImage } from "../../redux/actions/userActions";
 
 // MUI
 import {
@@ -25,7 +25,7 @@ import LocationOn from "@material-ui/icons/LocationOn";
 import LinkIcon from "@material-ui/icons/Link";
 import CalendarToday from "@material-ui/icons/CalendarToday";
 import KeyboardReturn from "@material-ui/icons/KeyboardReturn";
-import MyButton from "./myButton";
+import MyButton from "../layout/myButton";
 // import EditIcon from "@material-ui/icons/Edit";
 
 function styles(theme) {

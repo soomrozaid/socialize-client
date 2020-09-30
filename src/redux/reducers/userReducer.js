@@ -70,7 +70,7 @@ export default function (state = localState, action) {
         loading: true,
       };
     case LIKE_SCREAM:
-      return {
+      const newLikeState = {
         ...state,
         likes: [
           ...state.likes,
@@ -80,13 +80,17 @@ export default function (state = localState, action) {
           },
         ],
       };
+      saveState(newLikeState);
+      return newLikeState;
     case UNLIKE_SCREAM:
-      return {
+      const newUnlikeState = {
         ...state,
         likes: state.likes.filter(
           (like) => like.screamId !== action.payload.screamId
         ),
       };
+      saveState(newUnlikeState);
+      return newUnlikeState;
     default:
       return state;
   }

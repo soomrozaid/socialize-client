@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import { withStyles } from "@material-ui/core/styles";
-import MyButton from "./myButton";
+import MyButton from "../layout/myButton";
 import LikeButton from "./likeButton";
 import DeleteScream from "./deleteScream";
 import ScreamDialog from "./screamDialog";

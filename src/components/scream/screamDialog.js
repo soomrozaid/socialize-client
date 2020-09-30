@@ -1,10 +1,10 @@
 import React, { useState, Fragment, useEffect } from "react";
-import MyButton from "./myButton";
+import MyButton from "../layout/myButton";
 import { withStyles } from "@material-ui/core/styles";
 import dayjs from "dayjs";
 import { Link } from "react-router-dom";
 
-import theme from "../util/theme";
+import theme from "../../util/theme";
 
 // MUI
 import Button from "@material-ui/core/Button";
@@ -15,12 +15,14 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import CloseIcon from "@material-ui/icons/Close";
 import UnfoldMore from "@material-ui/icons/UnfoldMore";
+import ChatIcon from "@material-ui/icons/Chat";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 
 // Redux
 import { useSelector, useDispatch } from "react-redux";
-import { getScream } from "../redux/actions/dataActions";
+import { getScream } from "../../redux/actions/dataActions";
+import LikeButton from "./likeButton";
 
 const styles = (theme) => ({
   ...theme,
@@ -81,12 +83,7 @@ function ScreamDialog({ classes, screamId, userHandle }) {
       <CircularProgress size={200} thickness={2} />
     </div>
   ) : (
-    <Grid
-      container
-      spacing={16}
-      //   justify="center"
-      //   alignItems="center"
-    >
+    <Grid container spacing={16}>
       <Grid item xs={5}>
         <img
           src={userImage}
@@ -110,9 +107,14 @@ function ScreamDialog({ classes, screamId, userHandle }) {
         </Typography>
         <hr className={classes.invisibleSeperator} />
         <Typography variant="body1">{body}</Typography>
+        <LikeButton screamId={id} />
+        <span>{likeCount} Likes</span>
+        <MyButton tip="comment">
+          <ChatIcon color="primary" />
+        </MyButton>
+        <span>{commentCount} comments</span>
       </Grid>
     </Grid>
-    // <p>S</p>
   );
 
   return (

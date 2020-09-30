@@ -1,9 +1,9 @@
 import React, { useState, useEffect, Fragment } from "react";
-import theme from "../util/theme";
+import theme from "../../util/theme";
 
 // Redux
 import { useSelector, useDispatch } from "react-redux";
-import { editUserDetails } from "../redux/actions/userActions";
+import { editUserDetails } from "../../redux/actions/userActions";
 
 // MUI
 import { withStyles } from "@material-ui/core";
@@ -16,7 +16,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 
 // Icons
 import EditIcon from "@material-ui/icons/Edit";
-import MyButton from "./myButton";
+import MyButton from "../layout/myButton";
 
 function styles(theme) {
   return {

@@ -7,9 +7,9 @@ import Button from "@material-ui/core/Button";
 
 import { useSelector } from "react-redux";
 import MyButton from "./myButton";
-import PostScream from './postScream'
+import PostScream from '../scream/postScream'
 
-import AddIcon from "@material-ui/icons/Add";
+// import AddIcon from "@material-ui/icons/Add";
 import HomeIcon from "@material-ui/icons/Home";
 import NotificationsIcons from "@material-ui/icons/Notifications";
 
