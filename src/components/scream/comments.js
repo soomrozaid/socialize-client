@@ -21,47 +21,51 @@ const styles = (theme) => ({
 function Comments({ classes, comments }) {
   return (
     <Grid container>
-      {comments.map((comment, index) => {
-        const { body, createdAt, userImage, userHandle } = comment;
-        return (
-          <Fragment key={createdAt}>
-            <Grid item sm={12}>
-              <Grid container>
-                <Grid item sm={2}>
-                  <img
-                    src={
-                      userImage ??
-                      "https://firebasestorage.googleapis.com/v0/b/socialize-70b85.appspot.com/o/582.png?alt=media"
-                    }
-                    alt="comment"
-                    className={classes.commentImage}
-                  />
-                </Grid>
-                <Grid item sm={9}>
-                  <div className={classes.commentData}>
-                    <Typography
-                      variant="h5"
-                      component={Link}
-                      to={`/user/${userHandle}`}
-                      color="primary"
-                    >
-                      {userHandle}
-                    </Typography>
-                    <Typography variant="body2" color="textSecondary">
-                      {dayjs(createdAt).format("h:mm a, MMMM DD YYYY")}
-                    </Typography>
-                    <hr className={classes.invisibleSeperator} />
-                    <Typography variant="body1">{body}</Typography>
-                  </div>
+      {comments === null ? (
+        <p>Loading...</p>
+      ) : (
+        comments.map((comment, index) => {
+          const { body, createdAt, userImage, userHandle } = comment;
+          const image = userImage
+            ? userImage
+            : "https://firebasestorage.googleapis.com/v0/b/socialize-70b85.appspot.com/o/no-img.png?alt=media";
+          return (
+            <Fragment key={createdAt}>
+              <Grid item sm={12}>
+                <Grid container>
+                  <Grid item sm={2}>
+                    <img
+                      src={image}
+                      alt="comment"
+                      className={classes.commentImage}
+                    />
+                  </Grid>
+                  <Grid item sm={9}>
+                    <div className={classes.commentData}>
+                      <Typography
+                        variant="h5"
+                        component={Link}
+                        to={`/user/${userHandle}`}
+                        color="primary"
+                      >
+                        {userHandle}
+                      </Typography>
+                      <Typography variant="body2" color="textSecondary">
+                        {dayjs(createdAt).format("h:mm a, MMMM DD YYYY")}
+                      </Typography>
+                      <hr className={classes.invisibleSeperator} />
+                      <Typography variant="body1">{body}</Typography>
+                    </div>
+                  </Grid>
                 </Grid>
               </Grid>
-            </Grid>
-            {index !== comments.length - 1 && (
-              <hr className={classes.visibleSeperator} />
-            )}
-          </Fragment>
-        );
-      })}
+              {index !== comments.length - 1 && (
+                <hr className={classes.visibleSeperator} />
+              )}
+            </Fragment>
+          );
+        })
+      )}
     </Grid>
   );
 }

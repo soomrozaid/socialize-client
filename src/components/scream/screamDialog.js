@@ -145,7 +145,6 @@ function ScreamDialog({ classes, screamId, userHandle }) {
         >
           <CloseIcon />
         </MyButton>
-        {/* <DialogTitle>Post a new scream</DialogTitle> */}
         <DialogContent className={classes.dialogContent}>
           {dialogMarkup}
         </DialogContent>

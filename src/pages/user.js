@@ -37,9 +37,7 @@ function User(props) {
   ) : screams === null ? (
     <p>No screams from this user</p>
   ) : (
-    screams.map((scream) => {
-      return <Scream key={scream.screamId} scream={scream} />;
-    })
+    screams.map((scream) => <Scream key={scream.screamId} scream={scream} />)
   );
 
   return (
