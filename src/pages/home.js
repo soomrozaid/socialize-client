@@ -18,9 +18,13 @@ function Home() {
 
   function mapScreamsToScreen() {
     if (!loading)
-      return screams.map((scream) => (
-        <Scream key={scream.screamId} scream={scream} />
-      ));
+      return screams.map((scream) =>
+        screams !== null ? (
+          <Scream key={scream.screamId} scream={scream} />
+        ) : (
+          <p>Loading...</p>
+        )
+      );
     else return <p>Loading...</p>;
   }
 

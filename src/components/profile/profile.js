@@ -28,11 +28,9 @@ import KeyboardReturn from "@material-ui/icons/KeyboardReturn";
 import MyButton from "../layout/myButton";
 // import EditIcon from "@material-ui/icons/Edit";
 
-function styles(theme) {
-  return {
+const styles = (theme) => ({
     ...theme,
-  };
-}
+})
 
 function Profile({ classes }) {
   const {
