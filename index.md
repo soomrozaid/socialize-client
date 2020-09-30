@@ -1,37 +1,17 @@
-## Welcome to GitHub Pages
+# Socialize
 
-You can use the [editor on GitHub](https://github.com/soomrozaid/socialize-client/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+This project is essentially a demonstration for my skills as a UX/UI Developer.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+This web app is a social media platform with all of its complex features.
 
-### Markdown
+The name of the app is an oxymoron as in the app you post _screams_, which is the worst way to socialize.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+## Features
 
-```markdown
-Syntax highlighted code block
+All of the feature in this app are basically api endpoints, which actually makes the total size of the app significantly smaller.
 
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/soomrozaid/socialize-client/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+### Posting a Scream
+### Checking out a user's profile
+### Receiving Notifications
+### Commenting on a Scream
+### Liking and Unliking a Scream
