@@ -19,7 +19,6 @@ function getState() {
   try {
     const serializedState = localStorage.getItem("state");
     if (serializedState === null) {
-      console.log("null");
       return initialState;
     }
     const preparedState = JSON.parse(serializedState);
@@ -38,10 +37,7 @@ const state = getState();
 const store = createStore(
   reducers,
   state,
-  compose(
-    applyMiddleware(...middleware),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-  )
+  applyMiddleware(...middleware)
 );
 
 export default store;

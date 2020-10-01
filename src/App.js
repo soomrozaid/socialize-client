@@ -29,6 +29,9 @@ import axios from "axios";
 
 const theme = createMuiTheme(themeFile);
 
+axios.defaults.baseURL =
+  "https://us-central1-socialize-70b85.cloudfunctions.net/api/";
+
 const token = localStorage.FBIdToken;
 const forceAuth = false;
 
@@ -56,7 +59,11 @@ function App() {
                 <AuthRoute exact path="/login" component={Login} />
                 <AuthRoute exact path="/signup" component={Signup} />
                 <Route exact path="/users/:handle" component={User} />
-                <Route exact path='/users/:handle/scream/:screamId' component={User} />
+                <Route
+                  exact
+                  path="/users/:handle/scream/:screamId"
+                  component={User}
+                />
               </Switch>
             </div>
           </Router>
