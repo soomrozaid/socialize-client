@@ -3,6 +3,7 @@ import Grid from "@material-ui/core/Grid";
 
 import Scream from "../components/scream/scream";
 import Profile from "../components/profile/profile";
+import ScreamSkeleton from "../util/screamSkeleton";
 
 import { useSelector, useDispatch } from "react-redux";
 import { getScreams } from "../redux/actions/dataActions";
@@ -22,10 +23,10 @@ function Home() {
         screams !== null ? (
           <Scream key={scream.screamId} scream={scream} />
         ) : (
-          <p>Loading...</p>
+          <ScreamSkeleton />
         )
       );
-    else return <p>Loading...</p>;
+    else return <ScreamSkeleton />;
   }
 
   let recentScreamsMarkup = mapScreamsToScreen();

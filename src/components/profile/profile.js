@@ -26,6 +26,7 @@ import LinkIcon from "@material-ui/icons/Link";
 import CalendarToday from "@material-ui/icons/CalendarToday";
 import KeyboardReturn from "@material-ui/icons/KeyboardReturn";
 import MyButton from "../layout/myButton";
+import ProfileSkeleton from "../../util/profileSkeleton";
 // import EditIcon from "@material-ui/icons/Edit";
 
 const styles = (theme) => ({
@@ -121,7 +122,7 @@ function Profile({ classes }) {
       </Paper>
     )
   ) : (
-    <p>Loading...</p>
+    <ProfileSkeleton />
   );
 
   return profileMarkup;

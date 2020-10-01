@@ -1,13 +1,11 @@
 import {
   SET_USER,
-  // SET_ERRORS,
-  // CLEAR_ERRORS,
-  // LOADING_UI,
   SET_AUTHENTICATED,
   SET_UNAUTHENTICATED,
   LOADING_USER,
   LIKE_SCREAM,
   UNLIKE_SCREAM,
+  MARK_NOTIFICATIONS_READ,
 } from "../types";
 
 const initialState = {
@@ -88,6 +86,13 @@ export default function (state = localState, action) {
       };
       saveState(newUnlikeState);
       return newUnlikeState;
+    case MARK_NOTIFICATIONS_READ:
+      state.notifications.forEach((not) => (not.read = true));
+      const newMarkedNotifiState = state;
+      saveState(newMarkedNotifiState);
+      return {
+        ...state,
+      };
     default:
       return state;
   }

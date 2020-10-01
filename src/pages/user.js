@@ -9,6 +9,7 @@ import Grid from "@material-ui/core/Grid";
 import { useSelector, useDispatch } from "react-redux";
 import { getUserData } from "../redux/actions/dataActions";
 import { withStyles } from "@material-ui/core";
+import ProfileSkeleton from "../util/profileSkeleton";
 
 const styles = (theme) => ({
   ...theme,
@@ -38,7 +39,7 @@ function User(props) {
         setProfile(res.data.user);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [props.match.params.screamId]);
 
   const screamsMarkup = loading ? (
     <p>Loading Data...</p>
@@ -61,11 +62,10 @@ function User(props) {
       <Grid container spacing={6}>
         <Grid item sm={8} xs={12}>
           {screamsMarkup}
-          {console.log(loading, screamIdParam)}
         </Grid>
         <Grid item sm={4} xs={12}>
           {profile === null ? (
-            <p>Loading...</p>
+            <ProfileSkeleton />
           ) : (
             <StaticProfile profile={profile} />
           )}

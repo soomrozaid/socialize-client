@@ -108,4 +108,28 @@ export default {
     borderBottom: "1px solid rgba(0,0,0,0.1)",
     marginBottom: 20,
   },
+  handle: {
+    width: 60,
+    height: 18,
+    backgroundColor: "#673ab7",
+    marginBottom: 7,
+  },
+  date: {
+    height: 14,
+    width: 100,
+    backgroundColor: "rgba(0,0,0,0.3)",
+    marginBottom: 10,
+  },
+  fullLine: {
+    width: "90%",
+    height: 15,
+    backgroundColor: "rgba(0,0,0,0.6)",
+    marginBottom: 10,
+  },
+  halfLine: {
+    height: 15,
+    width: "50%",
+    backgroundColor: "rgba(0,0,0,0.6)",
+    marginBottom: 10,
+  },
 };

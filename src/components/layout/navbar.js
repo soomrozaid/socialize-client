@@ -7,6 +7,7 @@ import Button from "@material-ui/core/Button";
 
 import { useSelector } from "react-redux";
 import MyButton from "./myButton";
+import Notifications from './notifications'
 import PostScream from '../scream/postScream'
 
 // import AddIcon from "@material-ui/icons/Add";
@@ -27,9 +28,7 @@ function Navbar() {
                 <HomeIcon />
               </MyButton>
             </Link>
-            <MyButton tip="Notifications">
-              <NotificationsIcons />
-            </MyButton>
+            <Notifications />
           </Fragment>
         ) : (
           <Fragment>
